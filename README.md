@@ -1,3 +1,22 @@
+available also at: https://bit.ly/2LZx1Kl
+
+# Setup Instructions:
+
+- install _redux devtools_ browser extension ([chrome](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd), [firefox](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/))
+- `git clone` this repo
+- make sure you're on `hmr` branch
+- `cd redux-devtools`
+- `npm install` (install dependencies of the top-level directory)
+- `cd examples/todomvc` (relative sub-directory)
+  - `npm install` (install dependencies of the sub-directory)
+  - `npm start` (from `examples/todomvc`)
+
+Webpack should now be [running locally](http://localhost:3000).
+
+original readme below...
+
+----
+
 Redux DevTools
 =========================
 
