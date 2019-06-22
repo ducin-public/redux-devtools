@@ -4,15 +4,16 @@ import { bindActionCreators } from 'redux';
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
 import * as TodoActions from '../actions/TodoActions';
+import * as FilterActions from '../actions/FilterActions';
 
 class TodoApp extends Component {
   render() {
-    const { todos, actions } = this.props;
+    const { todos, actions, filter } = this.props;
 
     return (
       <div>
         <Header addTodo={actions.addTodo} />
-        <MainSection todos={todos} actions={actions} />
+        <MainSection todos={todos} actions={actions} filter={filter} />
       </div>
     );
   }
@@ -20,13 +21,14 @@ class TodoApp extends Component {
 
 function mapState(state) {
   return {
-    todos: state.todos
+    todos: state.todos,
+    filter: state.filter
   };
 }
 
 function mapDispatch(dispatch) {
   return {
-    actions: bindActionCreators(TodoActions, dispatch)
+    actions: bindActionCreators({ ...TodoActions, ...FilterActions }, dispatch)
   };
 }
 

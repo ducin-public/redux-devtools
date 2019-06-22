@@ -8,7 +8,7 @@ export default function todos(state = initialState, action) {
     return [{
       id: (state.length === 0) ? 0 : state[0].id + 1,
       marked: false,
-      text: action.text.toUpperCase()
+      text: action.text //.toUpperCase()
     }, ...state];
 
   case DELETE_TODO:

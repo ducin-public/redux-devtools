@@ -13,12 +13,12 @@ const TODO_FILTERS = {
 export default class MainSection extends Component {
   static propTypes = {
     todos: PropTypes.array.isRequired,
+    filter: PropTypes.string.isRequired,
     actions: PropTypes.object.isRequired
   };
 
   constructor(props, context) {
     super(props, context);
-    this.state = { filter: SHOW_ALL };
   }
 
   handleClearMarked() {
@@ -29,12 +29,11 @@ export default class MainSection extends Component {
   }
 
   handleShow(filter) {
-    this.setState({ filter });
+    this.props.actions.setFilter(filter);
   }
 
   render() {
-    const { todos, actions } = this.props;
-    const { filter } = this.state;
+    const { todos, actions, filter } = this.props;
 
     const filteredTodos = todos.filter(TODO_FILTERS[filter]);
     const markedCount = todos.reduce((count, todo) =>
@@ -68,8 +67,7 @@ export default class MainSection extends Component {
   }
 
   renderFooter(markedCount) {
-    const { todos } = this.props;
-    const { filter } = this.state;
+    const { todos, filter } = this.props;
     const unmarkedCount = todos.length - markedCount;
 
     if (todos.length) {
